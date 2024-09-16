@@ -1,0 +1,15 @@
+function Xc=coeff_correl(X,Y)
+X=double(X);
+Y=double(Y);
+Xm=mean(mean(X));
+Ym=mean(mean(Y));
+dX=X-Xm;
+dY=Y-Ym;
+pdXdY=dX.*dY;
+sompdXdY=sum(sum(pdXdY));
+[m,n]=size(X);
+N=m*n;
+XY2=sompdXdY/(N-1);
+Ec_Type_X=sqrt(var(X(:)));
+Ec_Type_Y=sqrt(var(Y(:)));
+Xc=XY2/(Ec_Type_X*Ec_Type_Y);
